@@ -1,52 +1,26 @@
-<img src="https://netflix.github.com/Hystrix/images/hystrix-logo-tagline-850.png">
+<img src="http://forums.juniper.net/t5/image/serverpage/image-id/4219i2418D2654D2F3991/image-size/original?v=mpbl-1&px=-1">
 
-# Hystrix: Latency and Fault Tolerance for Distributed Systems
+# WTF: Template Based UI Framework
 
-Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.
+WTF is 
 
 ## Full Documentation
 
-See the [Wiki](https://github.com/Netflix/Hystrix/wiki/) for full documentation, examples, operational details and other information.
-
-See the [Javadoc](http://netflix.github.com/Hystrix/javadoc) for the API.
+See the [Wiki](https://github.com/JSpaceTeam/wtf/wiki/) for full documentation, examples, operational details and other information.
 
 ## Communication
 
-- Google Group: [HystrixOSS](http://groups.google.com/d/forum/hystrixoss)
-- Twitter: [@HystrixOSS](http://twitter.com/HystrixOSS)
-- [GitHub Issues](https://github.com/Netflix/Hystrix/issues)
+- Yammer Group: [WTF](https://www.yammer.com/juniper.net/#/threads/inGroup?type=in_group&feedId=4336798)
+- [GitHub Issues](https://github.com/JSpaceTeam/wtf/issues)
 
-## What does it do?
+## TBD?
 
-#### 1) Latency and Fault Tolerance
+#### 1) TBD
 
-Stop cascading failures. Fallbacks and graceful degradation. Fail fast and rapid recovery. 
-
-Thread and semaphore isolation with circuit breakers. 
-
-#### 2) Realtime Operations
-
-Realtime monitoring and configuration changes. Watch service and property changes take effect immediately as they spread across a fleet. 
-
-Be alerted, make decisions, affect change and see results in seconds. 
-
-#### 3) Concurrency
-
-Parallel execution. Concurrency aware request caching. Automated batching through request collapsing.
-
-## Hello World!
-
-Code to be isolated is wrapped inside the run() method of a HystrixCommand similar to the following:
+TBD 
 
 ```java
-public class CommandHelloWorld extends HystrixCommand<String> {
-
-    private final String name;
-
-    public CommandHelloWorld(String name) {
-        super(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"));
-        this.name = name;
-    }
+public class HelloWorld {
 
     @Override
     protected String run() {
@@ -55,23 +29,7 @@ public class CommandHelloWorld extends HystrixCommand<String> {
 }
 ```
 
-This command could be used like this:
-
-```java
-String s = new CommandHelloWorld("Bob").execute();
-Future<String> s = new CommandHelloWorld("Bob").queue();
-Observable<String> s = new CommandHelloWorld("Bob").observe();
-```
-
-More examples and information can be found in the [How To Use](https://github.com/Netflix/Hystrix/wiki/How-To-Use) section.
-
-Example source code can be found in the [hystrix-examples](https://github.com/Netflix/Hystrix/tree/master/hystrix-examples/src/main/java/com/netflix/hystrix/examples) module.
-
 ## Binaries
-
-Binaries and dependency information for Maven, Ivy, Gradle and others can be found at [http://search.maven.org](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.netflix.hystrix%22%20AND%20a%3A%22hystrix-core%22).
-
-Change history and version numbers => [CHANGES.md](https://github.com/Netflix/Hystrix/blob/master/CHANGES.md)
 
 Example for Maven:
 
@@ -82,63 +40,29 @@ Example for Maven:
     <version>x.y.z</version>
 </dependency>
 ```
-and for Ivy:
-
-```xml
-<dependency org="com.netflix.hystrix" name="hystrix-core" rev="x.y.z" />
-```
-
-If you need to download the jars instead of using a build system, create a Maven pom file like this with the desired version:
-
-```xml
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.netflix.hystrix.download</groupId>
-	<artifactId>hystrix-download</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<name>Simple POM to download hystrix-core and dependencies</name>
-	<url>http://github.com/Netflix/Hystrix</url>
-	<dependencies>
-		<dependency>
-			<groupId>com.netflix.hystrix</groupId>
-			<artifactId>hystrix-core</artifactId>
-			<version>x.y.z</version>
-			<scope/>
-		</dependency>
-	</dependencies>
-</project>
-```
-
 Then execute:
 
 ```
-mvn -f download-hystrix-pom.xml dependency:copy-dependencies
+mvn -f download-wtf-pom.xml dependency:copy-dependencies
 ```
-
-It will download hystrix-core-*.jar and its dependencies into ./target/dependency/.
-
-You need Java 6 or later.
 
 ## Build
 
 To build:
 
 ```
-$ git clone git@github.com:Netflix/Hystrix.git
-$ cd Hystrix/
+$ git clone git@github.com:JSpaceTeam/wtf.git
+$ cd wtf/
 $ ./gradlew build
 ```
 
-Futher details on building can be found on the [Getting Started](https://github.com/Netflix/Hystrix/wiki/Getting-Started) page of the wiki.
-
 ## Run Demo
 
-To run a [demo app](https://github.com/Netflix/Hystrix/tree/master/hystrix-examples/src/main/java/com/netflix/hystrix/examples/demo/HystrixCommandDemo.java) do the following:
+To run a [demo app](https://www.juniper.net) do the following:
 
 ```
-$ git clone git@github.com:Netflix/Hystrix.git
-$ cd Hystrix/
+$ git clone git@github.com:JSpaceTeam/wtf.git
+$ cd wtf/
 ./gradlew runDemo
 ```
 
@@ -163,26 +87,20 @@ Request => GetUserAccountCommand[SUCCESS][10ms], GetPaymentInformationCommand[SU
 Request => GetUserAccountCommand[FAILURE, FALLBACK_SUCCESS][6ms], GetPaymentInformationCommand[SUCCESS][11ms], GetUserAccountCommand[FAILURE, FALLBACK_SUCCESS, RESPONSE_FROM_CACHE][0ms]x2, GetOrderCommand[SUCCESS][153ms], CreditCardCommand[SUCCESS][1321ms]
 ```
 
-This demo simulates 4 different [HystrixCommand](https://github.com/Netflix/Hystrix/tree/master/hystrix-core/src/main/java/com/netflix/hystrix/HystrixCommand.java) implementations with failures, latency, timeouts and duplicate calls in a multi-threaded environment.
-
-It logs the results of [HystrixRequestLog](https://github.com/Netflix/Hystrix/tree/master/hystrix-core/src/main/java/com/netflix/hystrix/HystrixRequestLog.java) and metrics from [HystrixCommandMetrics](https://github.com/Netflix/Hystrix/tree/master/hystrix-core/src/main/java/com/netflix/hystrix/HystrixCommandMetrics.java).
-
 ## Dashboard
 
-A dashboard for monitoring applications using Hystrix is available in the [hystrix-dashboard](https://github.com/Netflix/Hystrix/tree/master/hystrix-dashboard) module.
+A dashboard for WTF is available in the [hystrix-dashboard](https://www.juniper.net) module.
 
-More information can be found on the [Dashboard Wiki](https://github.com/Netflix/Hystrix/wiki/Dashboard).
-
-<img src="https://raw.github.com/wiki/Netflix/Hystrix/images/hystrix-dashboard-single-row.png">
+More information can be found on the [Dashboard Wiki](https://www.juniper.net).
 
 ## Bugs and Feedback
 
-For bugs, questions and discussions please use the [Github Issues](https://github.com/Netflix/Hystrix/issues).
+For bugs, questions and discussions please use the [Github Issues](https://github.com/JSpaceTeam/wtf/issues).
 
  
 ## LICENSE
 
-Copyright 2013 Netflix, Inc.
+Copyright 2013 Juniper Networks, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
